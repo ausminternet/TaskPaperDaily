@@ -3,7 +3,7 @@ require 'date'
 require 'chronic'
 
 # First set the files to search/replace in
-files = Dir["/home/elu3/Dropbox/TaskPaper/*.taskpaper"]
+files = Dir["/path/to/your/TaskPaperFiles/*.taskpaper"]
 output = ""
 
 @yesterday = Chronic.parse('yesterday').to_date

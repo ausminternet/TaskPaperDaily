@@ -44,6 +44,10 @@ and if you don't get the milk today, tomorrow it wil look like this:
 ## Ho to use:
 The script schould at least run once a day over all your TaskPaper files, and this schould be done before you start the new day. You can run it as often as you like. In my setup it runs every hour via chronjob. Because I am using TaskPaper and TodoPaper on three different machines, my files are located in my dropbox and sync across all devices. The Script is running on my uberspace, where dropbox is running too.
 
+Don't forget to set the correct path to your *.taskpaper-files:
+	
+	files = Dir["/path/to/your/TaskPaperFiles/*.taskpaper"]
+
 ##ToDo:
 - I would like to have reminders for a special time, getting an iOS-Push or mail. The tag could look like @reminder(tomorrow,9:00)
 
