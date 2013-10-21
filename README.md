@@ -20,6 +20,7 @@ TaskPaperDaily, a little rubyscript which does the trick.
 
 ### simple dates
 The Script:
+
 1. replaces @today and @tomorrow with their absolute days, e.g. @due(2013-10-21)
 2. replaces relative weekdays with their absolute days, like @due(2013-10-21) for @due(monday)...@due(friday)
 3. adds @today @tomorrow and @overdue based on the new absolute dates
