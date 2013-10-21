@@ -19,9 +19,10 @@ I would like to start my workday with opening my TaskPaper without getting throu
 TaskPaperDaily, a little rubyscript which does the trick.
 
 ### simple dates
-1. replace @today and @tomorrow with their absolute days, e.g. @due(2013-10-21)
-2. add absolute dates for relative weekdays, like @due(2013-10-21) for @due(monday)...@due(friday)
-3. add @today @tomorrow and @overdue based on the new absolute dates
+The Script:
+1. replaces @today and @tomorrow with their absolute days, e.g. @due(2013-10-21)
+2. adds absolute dates for relative weekdays, like @due(2013-10-21) for @due(monday)...@due(friday)
+3. adds @today @tomorrow and @overdue based on the new absolute dates
 
 ### calendar weeks
 for my job I mostly use calendar weeks, therefor TaskPaperDaily is aware of them too: @due(kw43) is the appropriate tag for this.
