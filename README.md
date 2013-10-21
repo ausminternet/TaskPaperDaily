@@ -54,6 +54,6 @@ Don't forget to set the correct path to your *.taskpaper-files:
 - I would like to have reminders for a special time, getting an iOS-Push or mail. The tag could look like @reminder(tomorrow,9:00)
 
 ##Comments, Bugs and Kudos:
- Twitter [@ausminternet](http://twitter.com/ausminternet)
- Mail [hallo@janhofmann.name](mailto:hallo@janhofmann.name)
+Twitter [@ausminternet](http://twitter.com/ausminternet)
+Mail [hallo@janhofmann.name](mailto:hallo@janhofmann.name)
 
