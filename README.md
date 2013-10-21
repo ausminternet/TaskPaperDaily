@@ -3,33 +3,33 @@ TaskPaperDaily
 
 Extension for TaskPaper (and TodoPaper) to handle @due-tags and get them up-to-date.
 
-# Preconditions:
+## Preconditions:
 1. ruby >= 1.9
 2. gem 'chronic'
 3. *.taskpaper files, of course ;)
 4. an alway-on device (dropbox + uberspace for example)
 
-# The problem:
+## The problem:
 TaskPaper uses duetags, for example: @today or @due(2013-10-21). But these due-dates will not update automaticly. @today will be @today, as long as you change it manually.
 I wanted to get an @overdue if I tag an item with @today and don't close it until tomorrow. Automagicly.
 
 I would like to start my workday with opening my TaskPaper without getting through all tags and getting the actual date for them.
 
-# The solution:
+## The solution:
 TaskPaperDaily, a little rubyscript which does the trick.
 
-## simple dates
+### simple dates
 1. replace @today and @tomorrow with their absolute days, e.g. @due(2013-10-21)
 2. add absolute dates for relative weekdays, like @due(2013-10-21) for @due(monday)...@due(friday)
 3. add @today @tomorrow and @overdue based on the new absolute dates
 
-## calendar weeks
+### calendar weeks
 for my job I mostly use calendar weeks, therefor TaskPaperDaily is aware of them too: @due(kw43) is the appropriate tag for this.
 On the sunday before the start of the given week @tomorrow will be added. Through the whole week @today will be added. After the week a @overdue-tag will be added as normal.
 
 All these actions will not apply to tasks which have a @done tag.
 
-## Example
+### Example
 
 - getting milk @today
 
