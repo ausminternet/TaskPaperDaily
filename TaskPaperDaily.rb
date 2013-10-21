@@ -11,7 +11,7 @@ output = ""
 @now = Time.new
 @tomorrow = Chronic.parse('tomorrow').to_date
 @current_week = Time.new.strftime("%W").to_i+1
-@weekdays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
+@weekdays = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
 @due_weeknumber = /@due\(kw([1-9]{1}|[0-4][0-9]{1}|5{1}[0-3]{1})\)/
 @regex_due_date = /@due\([0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])\)/
 
