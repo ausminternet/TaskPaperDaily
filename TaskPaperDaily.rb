@@ -33,9 +33,9 @@ files.each do |file_name|
 
 			# remove relative dates if abolute dates are given
 			if line.include? "@due"
-				line.gsub!("@today", "")
-				line.gsub!("@tomorrow", "")
-				line.gsub!("@overdue", "")
+				line.gsub!(" @today", "")
+				line.gsub!(" @tomorrow", "")
+				line.gsub!(" @overdue", "")
 			# set absolut date
 			else
 				line.gsub!("@today", "@due(#{@today})")
