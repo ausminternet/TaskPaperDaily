@@ -48,7 +48,6 @@ files.each do |file_name|
 				if line.include? "@#{day}"
 					due_date = Chronic.parse(day).to_date.to_s
 					line.gsub!("@#{day}", "@due(#{due_date})")
-					break
 				end
 			end
 
