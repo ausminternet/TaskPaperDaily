@@ -44,9 +44,10 @@ files.each do |file_name|
 			end
 
 			# get absolute days for weekdays
+			@weekdays.each do |day|
 				if line.include? "@#{day}"
 					due_date = Chronic.parse(day).to_date.to_s
-					line.gsub!("@#{day}", "@due(#{due_date})")
+					line.gsub!(/@#{day}/i, "@due(#{due_date})")
 				end
 			end
 
@@ -64,6 +65,7 @@ files.each do |file_name|
 				rescue
 					match
 				end
+				match
 			end
 
 			# handle calender weeks
