@@ -44,36 +44,32 @@ files.each do |file_name|
 
 			end
 
-
-			unless line.include? "@done"
-
-				# get absolute date for weekdays
-				unless line.index(@regex_due_date)
-					line.gsub!(/@due\([^\)]*\)/) do |match|
-						begin
-							due_string = match[/@due\((.*)\)/, 1]
-							due_date = Chronic.parse(due_string).to_date.to_s
-							match += " @due(#{due_date})"
-						rescue
-							match
-						end
-					end
-				end
-
-				# set relative dates
-				line.gsub!(@regex_due_date) do |match|
+			# get absolute date for weekdays
+			unless line.index(@regex_due_date)
+				line.gsub!(/@due\([^\)]*\)/) do |match|
 					begin
-						date = DateTime.parse(match)
-						if date < @today
-							match += " @overdue"
-						elsif date == @today
-						 	match += " @today"
-						elsif date == @tomorrow
-						 	match += " @tomorrow"
-						end
+						due_string = match[/@due\((.*)\)/, 1]
+						due_date = Chronic.parse(due_string).to_date.to_s
+						match += " @due(#{due_date})"
 					rescue
 						match
 					end
+				end
+			end
+
+			# set relative dates
+			line.gsub!(@regex_due_date) do |match|
+				begin
+					date = DateTime.parse(match)
+					if date < @today
+						match += " @overdue"
+					elsif date == @today
+					 	match += " @today"
+					elsif date == @tomorrow
+					 	match += " @tomorrow"
+					end
+				rescue
+					match
 				end
 			end
 
