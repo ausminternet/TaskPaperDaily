@@ -11,18 +11,17 @@ output = ""
 @now = Time.new
 @tomorrow = Chronic.parse('tomorrow').to_date
 @current_week = Time.new.strftime("%W").to_i+1
-@weekdays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+@weekdays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
 @due_weeknumber = /@due\(kw([1-9]{1}|[0-4][0-9]{1}|5{1}[0-3]{1})\)/
 @regex_due_date = /@due\([0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])\)/
 
 files.each do |file_name|
 	infile = File.new(file_name)
-	puts "test"
+
 	#output = "Last run at #{@today}\n\n"
 	first_line = 0
 	while(!infile.eof?) do
 		line = infile.gets
-
 		if first_line == 0
 			unless line.gsub!(/^Last run at(.*)$/, "Last run at #{@now}\n\n")
 				output = "Last run at #{@today}\n\n"
@@ -44,18 +43,6 @@ files.each do |file_name|
 
 			end
 
-			# get absolute date for weekdays
-			unless line.index(@regex_due_date)
-				line.gsub!(/@due\([^\)]*\)/) do |match|
-					begin
-						due_string = match[/@due\((.*)\)/, 1]
-						due_date = Chronic.parse(due_string).to_date.to_s
-						match += " @due(#{due_date})"
-					rescue
-						match
-					end
-				end
-			end
 
 			# set relative dates
 			line.gsub!(@regex_due_date) do |match|
@@ -73,12 +60,12 @@ files.each do |file_name|
 				end
 			end
 
-			# remove weekday when duedate is tomorow
-			if line.include? "@due(#{@tomorrow})"
-				@weekdays.any? do |day|
-					if line.include? "@due(#{day})"
-						line.gsub!("@due(#{day})", "")
-					end
+			# get absolute days for weekdays
+			@weekdays.any? do |day|
+				if line.include? "@#{day}"
+					due_date = Chronic.parse(day).to_date.to_s
+					line.gsub!("@#{day}", "@due(#{due_date})")
+					break
 				end
 			end
 
