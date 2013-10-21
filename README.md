@@ -1,7 +1,7 @@
 TaskPaperDaily
 ==============
 
-Extension for TaskPaper (and TodoPaper) to handle @due-tags and get them up-to-date.
+Extension for [TaskPaper](http://www.hogbaysoftware.com/products/taskpaper) (and [TodoPaper](http://widefido.com/products/todopaper/)) to handle @due-tags and get them up-to-date.
 
 ## Preconditions:
 1. ruby >= 1.9
