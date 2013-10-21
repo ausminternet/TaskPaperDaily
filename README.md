@@ -39,11 +39,11 @@ after running the script the same day:
 
 - getting milk @due(2013-10-20) @today
 
-and if you don't get the milk today, tomorrow it wil look like this:
+and if you don't get the milk today, tomorrow it will look like this:
 
 - getting milk @due(2013-10-20) @overdue
 
-## Ho to use:
+## How to use:
 The script schould at least run once a day over all your TaskPaper files, and this schould be done before you start the new day. You can run it as often as you like. In my setup it runs every hour via chronjob. Because I am using TaskPaper and TodoPaper on three different machines, my files are located in my dropbox and sync across all devices. The Script is running on my uberspace, where dropbox is running too.
 
 Don't forget to set the correct path to your *.taskpaper-files:
