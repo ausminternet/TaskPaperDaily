@@ -11,9 +11,15 @@ output = ""
 @now = Time.new
 @tomorrow = Chronic.parse('tomorrow').to_date
 @current_week = Time.new.strftime("%W").to_i+1
-@weekdays = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
+@weekdays_array = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
 @due_weeknumber = /@due\(kw([1-9]{1}|[0-4][0-9]{1}|5{1}[0-3]{1})\)/
 @regex_due_date = /@due\([0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])\)/
+
+#hashing the weekdays because Chronic is slow
+@weekdays = {}
+@weekdays_array.each do |day|
+	 @weekdays[day] = Chronic.parse(day).to_date.to_s
+end
 
 files.each do |file_name|
 	infile = File.new(file_name)
@@ -31,6 +37,13 @@ files.each do |file_name|
 
 		if !line.include? "@done"
 
+			# get absolute days for weekdays
+			@weekdays.each_key do |day|
+				if line.downcase.include? "@#{day}"
+					line.gsub!(/@#{day}/i, "@due(#{@weekdays[day]})")
+				end
+			end
+
 			# remove relative dates if abolute dates are given
 			if line.include? "@due"
 				line.gsub!(" @today", "")
@@ -41,14 +54,6 @@ files.each do |file_name|
 				line.gsub!("@today", "@due(#{@today})")
 				line.gsub!("@tomorrow", "@due(#{@tomorrow})")
 
-			end
-
-			# get absolute days for weekdays
-			@weekdays.each do |day|
-				if line.downcase.include? "@#{day}"
-					due_date = Chronic.parse(day).to_date.to_s
-					line.gsub!(/@#{day}/i, "@due(#{due_date})")
-				end
 			end
 
 			# set relative dates
